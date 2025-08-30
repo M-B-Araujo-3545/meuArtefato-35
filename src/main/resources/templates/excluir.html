@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Lista de Tarefas</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Status</th>
+    <th>Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="tarefa : ${tarefas}">
+    <td th:text="${tarefa.id}"></td>
+    <td th:text="${tarefa.nome}"></td>
+    <td th:text="${tarefa.descricao}"></td>
+    <td th:text="${tarefa.status}"></td>
+    <td>
+      <a th:href="@{/tarefas/excluir/{id}(id=${tarefa.id})}">Excluir</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>ml>

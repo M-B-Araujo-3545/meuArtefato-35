@@ -1,0 +1,15 @@
+###
+GET http://localhost:8080/tarefas/excluir/{{id}}
+[
+{
+"id": "",
+"nome" : "tarefa escolar",
+"dataEntrega" : "12-12-2025",
+"responsavel" : "Marcos Barbosa Araujo"
+}
+]
+
+###
+POST http://localhost:8080/tarefas/salvar
+
+###

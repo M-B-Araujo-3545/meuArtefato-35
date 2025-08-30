@@ -1,0 +1,100 @@
+/* Estilos básicos para todos os dispositivos (mobile) */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que o padding não adicione largura */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Oculta o ID no mobile para economizar espaço */
+table th:first-child, table td:first-child {
+    display: none;
+}
+/* Media query para telas a partir de 768px (tablets e desktops) */
+@media (min-width: 768px) {
+    body {
+        max-width: 960px; /* Limita a largura do conteúdo para telas grandes */
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 0 auto 20px auto;
+    }
+
+    button {
+        width: auto;
+    }
+
+    table {
+        margin-top: 30px;
+    }
+
+    /* Torna o ID visível novamente no desktop */
+    table th:first-child, table td:first-child {
+        display: table-cell;
+    }
+}

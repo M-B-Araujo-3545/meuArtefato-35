@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Nova Tarefa</h1>
+<form th:action="@{/tarefas/salvar}" th:object="${tarefa}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label>Nome da Tarefa:</label><input type="text" th:field="*{nome}" /><br/>
+    <label>Data de Entrega:</label><input type="date" th:field="*{dataEntrega}" /><br/>
+    <label>Responsável:</label><input type="text" th:field="*{responsavel}" /><br/>
+    <button type="submit">Salvar</button>
+</form>
+<h2>Tarefas Cadastradas</h2>
+<form th:action="@{/tarefas/pesquisar}" method="get">
+    <input type="text" name="nome" placeholder="Pesquisar por nome"/>
+    <button type="submit">Pesquisar</button>
+</form>
+<table border="1">
+    <tr><th>ID</th><th>Nome</th><th>Data</th><th>Responsavel</th><th>Ações</th></tr>
+    <tr th:each="tarefa : ${tarefas}">
+        <td th:text="${tarefa.id}"></td>
+        <td th:text="${tarefa.nome}"></td>
+        <td th:text="${tarefa.dataEntrega}"></td>
+        <td th:text="${tarefa.responsavel}"></td>
+        <td>
+            <a th:href="@{/tarefas/editar/{id}(id=${tarefa.id})}">Editar</a>
+            <a href="#" th:onclick="'confirmarExclusao(' + ${tarefa.id} + ')'">Excluir</a>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function confirmarExclusao(id) {
+        if (confirm("Tem certeza que deseja excluir esta tarefa?")) {
+            // Se o usuário confirmar, redireciona para a URL de exclusão
+            window.location.href = '/tarefas/excluir/' + id;
+        }
+    }
+</script>
+
+</body>
+</html>
